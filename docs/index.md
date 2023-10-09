@@ -71,9 +71,8 @@ After install Anaconda:
 
 ```
 
-
-
-
+### Sample Dataset
+Please find sample dataset of EMPIAR-10304 (including `.rec`, `.tlt`, `.ali`, parquet file from interactive session, sample train img txt for both exploration and refinement module, sample train coordinates txt for refinement module) [here](https://drive.google.com/drive/folders/1roME4QnAAam1q0D8I53WWGbtAS-D80jk?usp=drive_link). For usage, download all files and save all `.rec`, `.tlt`, `.ali` files to `sample_data` directory, save all `.txt` files to `data` directory. 
 
 <!-- For full documentation visit [mkdocs.org](https://www.mkdocs.org). -->
 
