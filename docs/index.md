@@ -50,7 +50,7 @@ After install Anaconda:
 ├── data # data folder that stores all training data, can rename it if needed
 │   ├── sample_train_explore_img.txt
 │   ├── sample_train_refine_img.txt
-│   ├── sample_train_refine_coord.txt
+│   ├── training_coordinates.txt
 ├── datasets # datasets fodler that contains all dataloading, sampling related code 
 │   ├── dataset_factory.py # file that contains all dataset factory and sampling factory 
 │   ├── tomo_*.py # data factory for different modes

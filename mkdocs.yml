@@ -5,6 +5,7 @@ nav:
     - Installation: index.md
     - Cellular Content Exploration: explore.md
     - Particle Refined Localization: refine.md
+    - Quick tutorial: quick_tutorial.md
 markdown_extensions:
   - abbr
   - admonition

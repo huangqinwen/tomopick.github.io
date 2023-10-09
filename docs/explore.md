@@ -4,7 +4,7 @@ For the exploration step, XXX learns an embedding space for 3D macromolecules su
 ### Input preparation
 There are two different mode for this module: 
 
-`2d3d`: Input to this module include aligned 2D tilt series (.mrc), corresponding angles (.tlt), 3D reconstructed tomograms from tilt series (.rec). 
+`2d3d`: Input to this module include aligned 2D tilt series (.mrc, or .ali as in `sample_data`), corresponding angles (.tlt), 3D reconstructed tomograms from tilt series (.rec). 
 
 `3d`: Input to this module is 3D reconstructed tomograms(.rec) alone. 
 
