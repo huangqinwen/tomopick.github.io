@@ -84,7 +84,6 @@ theme:
     - search.suggest
     - toc.follow
   language: en  
-  favicon: assets/milopyp_all.png
   icon:
     admonition:
       <type>: material/alert
