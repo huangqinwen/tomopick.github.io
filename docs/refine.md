@@ -1,5 +1,5 @@
 ### Particle refined localization module
-For the refinement step, XXX learns to localize proteins of interests with high accuracy, when trained using sparsely annotated data. This step can be used without the previous exploration step. 
+For the refinement step, MiLoPYP learns to localize proteins of interests with high accuracy, when trained using sparsely annotated data. This step can be used without the previous exploration step. 
 
 ### Input preparation
 Training set should include two files: 1. a `.txt` file with tomogram name and path to tomogram; 2. a `.txt` file with image name and its corresponding x,y,z coordinates.

@@ -1,5 +1,5 @@
 ## Cellular content exploration module 
-For the exploration step, XXX learns an embedding space for 3D macromolecules such that similar structures are grouped together while dissimilar ones are separated. The embedding space is then projected into 2D and 3D which allows easy identification of the distribution of macromolecular structures across an entire dataset. 
+For the exploration step, MiLoPYP learns an embedding space for 3D macromolecules such that similar structures are grouped together while dissimilar ones are separated. The embedding space is then projected into 2D and 3D which allows easy identification of the distribution of macromolecular structures across an entire dataset. 
 
 ### Input preparation
 There are two different mode for this module: 
