@@ -63,7 +63,7 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
-    # - content.code.select
+    - content.code.select
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
@@ -84,7 +84,8 @@ theme:
     - search.suggest
     - toc.follow
   language: en  
-  favicon: assets/milopyp_all.png
+  favicon: assets/milopyp_icon_only.png
+  logo: assets/milopyp_all.png
   icon:
     admonition:
       <type>: material/alert
