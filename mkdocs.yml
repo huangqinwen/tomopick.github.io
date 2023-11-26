@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-site_name: My Docs
+site_name: MiLoPYP Documentation  
 nav:
   - Getting Started:
     - Installation: index.md
@@ -84,6 +84,7 @@ theme:
     - search.suggest
     - toc.follow
   language: en  
+  favicon: assets/milopyp_all.png
   icon:
     admonition:
       <type>: material/alert
