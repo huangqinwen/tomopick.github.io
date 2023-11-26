@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-# site_name:  
+site_name:  
 nav:
   - Getting Started:
     - Installation: index.md
