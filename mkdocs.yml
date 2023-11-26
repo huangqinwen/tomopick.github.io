@@ -1,5 +1,6 @@
 # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-site_name:  
+site_name: "" 
+site_url: "https://huangqinwen.github.io/tomopick.github.io/"
 nav:
   - Getting Started:
     - Installation: index.md
@@ -86,6 +87,26 @@ theme:
   language: en  
   favicon: assets/milopyp_icon_only_large.png
   logo: assets/milopyp_large.png
+  palette:
+  # Palette toggle for automatic mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+
+  # Palette toggle for light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+  # Palette toggle for dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference
   icon:
     admonition:
       <type>: material/alert
