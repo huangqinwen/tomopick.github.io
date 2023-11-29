@@ -147,11 +147,11 @@ Sample outputs in `debug` folder.
 
 === "predicted microtubule heatmap"
 
-    [![predicted heatmap]][predicted heatmap]
+    [![predicted microtubule heatmap][predicted microtubule heatmap]
 
 === "predicted microtubule output after nms without post processing"
 
-    [![predicted output after nms]][predicted output after nms]
+    [![predicted output after nms without post processing]][predicted output after nms without post processing]
 
   [predicted microtubule heatmap]: assets/10_L4_ts_03pred_hm39.png
   [predicted output after nms without post processing]: assets/10_L4_ts_03pred_out39.png
@@ -195,11 +195,11 @@ python test.py semi --arch unet_5 --dataset semi --exp_id fib_test --load_model 
 | `r2_cutoff` | max residual for fitted curve, discard if above the residual/bad fitting|
 | `distance_cutoff` | distance cutoff for whether two points are connected in graph|
 
-=== "predicted microtubule heatmap"
+=== "after post-processing"
 
     [![without post-processing]][without post-processing]
 
-=== "predicted microtubule output after nms without post processing"
+=== "without post-processing"
 
     [![after post-processing]][after post-processing]
 
