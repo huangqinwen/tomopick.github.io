@@ -67,7 +67,8 @@ __Once files are generated, move all training files to `data/` directory (create
 
 ### Training
 
-A sample training command to train sample EMPIAR-10304 datasets (suppose train image txt is called `sample_train_explore_img.txt` and train coordinates txt is called `training_coordinates.txt` and validation image txt is called `sample_val_img.txt` and validation coordinates txt is called `val_coordinates.txt` (Validation files are optional):
+#### Globular shaped proteins 
+A sample training command to train sample EMPIAR-10304 dataset (suppose train image txt is called `sample_train_explore_img.txt` and train coordinates txt is called `training_coordinates.txt` and validation image txt is called `sample_val_img.txt` and validation coordinates txt is called `val_coordinates.txt` (Validation files are optional):
 
 ```
 python main.py semi --down_ratio 2 --num_epochs 10 --bbox 16 --exp_id sample_refinement --dataset semi --arch unet_5 --save_all --debug 4 --val_interval 1 --thresh 0.85 --cr_weight 0.1 --temp 0.07 --tau 0.01 --lr 5e-4 --train_img_txt sample_train_explore_img.txt --train_coord_txt training_coordinates.txt --val_img_txt sample_val_img.txt --val_coord_txt val_coordinates.txt --K 900 --compress --order xzy --gauss 0.8 --contrastive --last_k 3
@@ -93,6 +94,7 @@ python main.py semi --down_ratio 2 --num_epochs 10 --bbox 16 --exp_id sample_ref
 | `last_k`        | size of convolution filter for last layer  |
 | `compress`        | whether to combine 2 z-slices into 1, recommend on  |
 | `K`        | maximum number of particles  |
+| `fiber`        | if the protein-of-interest is fiber/tubular shaped, turn this on  |
 
 More description of arguments are in ```opt.py``` file.  Please refer to the paper for detailed parameter selection.
 
@@ -129,7 +131,36 @@ Sample outputs in `debug` folder
 
         Cutoff threshold selection can be estimated based on detection output (a `.txt` file that contains x,y,z coordinates and corresponding detection score). It can also be estimated from `*_pred_out.png` images within `debug` fodler that circles out identified particles above a certain cutoff threshold. If there are many false positives, consider using a higher cutoff score. 
 
+#### Training on tubular shaped proteins
+
+A sample training command to train sample EMPIAR-10987 dataset (suppose train image txt is called `sample_train_microtubule_img.txt` and train coordinates txt is called `training_coordinates_microtubule.txt` and validation image txt is called `sample_val_microtubule.txt` and validation coordinates txt is called `val_coordinates_microtubule.txt` (Validation files are optional):
+
+```
+python main.py semi --down_ratio 2 --num_epochs 10 --bbox 12 --contrastive --exp_id fib_test --dataset semi --arch unet_5 --save_all --debug 4 --val_interval 1 --thresh 0.3 --cr_weight 1.0 --temp 0.07 --tau 0.01 --lr 1e-4 --train_img_txt sample_train_microtubule_img.txt --train_coord_txt training_coordinates_microtubule.txt --val_img_txt sample_val_microtubule.txt --val_coord_txt val_coordinates_microtubule.txt --K 550 --compress --gauss 1 --order xzy --last_k 5 --fiber
+``` 
+
+Note here the main different is the `--fiber` command. Since the protein-of-interest is of tubular shape, make sure to have `--fiber` turned on. 
+
+Outputs will be the same as training for globular shaped proteins. 
+
+Sample outputs in `debug` folder. 
+
+=== "predicted microtubule heatmap"
+
+    [![predicted heatmap]][predicted heatmap]
+
+=== "predicted microtubule output after nms without post processing"
+
+    [![predicted output after nms]][predicted output after nms]
+
+  [predicted microtubule heatmap]: assets/10_L4_ts_03pred_hm39.png
+  [predicted output after nms without post processing]: assets/10_L4_ts_03pred_out39.png
+
+
 ### Inference
+
+#### Inference on globular shaped proteins
+
 Once training is finished, we can use the trained model for testing. `test_img.txt` that contains all tomograms can be generated using `generate_train_files.py` following similar process. To run inference on all tomograms, run:
 ```
 python test.py semi --arch unet_5 --dataset semi --exp_id sample_refinement --load_model exp/semi/sample_refinement/model_4.pth --down_ratio 2 --K 900 --ord xzy --out_thresh 0.2 --test_img_txt test_img.txt --compress --gauss 0.8 --out_id all_out
@@ -150,6 +181,32 @@ Outputs are saved to `exp/semi/sample_refinement/all_out/` folder. For each tomo
 !!! warning
 
 	Make sure to use same `--last_k`, `--gauss`, `--arch` to make sure correct loading of models.
+
+#### Inference on tubular shaped proteins
+
+For tubular shaped proteins, similarly, we add `--fiber` to the command. In addition, we specify cutoff threshold for curve fitting to the infenrece command. To run inference on tomograms with fiber-specific post-processing, run:
+
+```
+python test.py semi --arch unet_5 --dataset semi --exp_id fib_test --load_model exp/semi/fib_test/model_10.pth --down_ratio 2 --K 550 --order xzy --out_thresh 0.205 --test_img_txt sample_train_microtubule_img.txt --compress --gauss 1 --cutoff_z 10 --out_id new_out --last_k 5 --fiber --curvature_cutoff 0.03 --nms 3
+```
+| Arguments   | Purpose                                                                       |
+|:-------------|:------------------------------------------------------------------------------|
+| `curvature_cutoff` | max curvature for fitted curve, for microtubules the curvature should be small. Curves above the threshold will be discarded.|
+| `r2_cutoff` | max residual for fitted curve, discard if above the residual/bad fitting|
+| `distance_cutoff` | distance cutoff for whether two points are connected in graph|
+
+=== "predicted microtubule heatmap"
+
+    [![without post-processing]][without post-processing]
+
+=== "predicted microtubule output after nms without post processing"
+
+    [![after post-processing]][after post-processing]
+
+  [after post-processing]: assets/l4_ts_03_post.jpg
+  [without post-processing]: assets/10_L4_ts_03pred_out39.png
+
+
 
 #### Convert output txt to `.mod` for imod
 Make usre output txt files do not include score. Then, run:

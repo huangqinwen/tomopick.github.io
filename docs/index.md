@@ -30,7 +30,7 @@ After install Anaconda:
     ```
 
     ```
-    git clone https://github.com/ $TomoPick_ROOT
+    git clone https://github.com/$TomoPick_ROOT
     ```
 
 2. Install the requirements
