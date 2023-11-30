@@ -195,11 +195,11 @@ python test.py semi --arch unet_5 --dataset semi --exp_id fib_test --load_model 
 | `r2_cutoff` | max residual for fitted curve, discard if above the residual/bad fitting|
 | `distance_cutoff` | distance cutoff for whether two points are connected in graph|
 
-=== "after post-processing"
+=== "without post-processing"
 
     [![without post-processing]][without post-processing]
 
-=== "without post-processing"
+=== "after post-processing"
 
     [![after post-processing]][after post-processing]
 
