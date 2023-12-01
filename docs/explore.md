@@ -220,12 +220,12 @@ Exported coordinates can be downloaded through interactive session. In the examp
 
 Convert parquet to training coordinates `.txt` files by running:
 ```
-python interactive_to_training_coords.py --input 2023-10-08_19-44-41.parquet --output training_coordinates.txt 
+python interactive_to_training_coords.py --input path_to_dir_of_parquets --output training_coordinates.txt 
 ```
 
 | Arguments   | Purpose                                                                       |
 |:-------------|:------------------------------------------------------------------------------|
-| `input` | full path to downloaded parquet file                                                   |
+| `input` | full path to directory that contains all downloaded parquet file                                                   |
 | `output`       | full path to output training coordinates file                                                                   |
 | `if_double`  | whether z coordinates obtained from DoGs in exploration module is downscaled by 2, if so needs to rescale it back                                                               |
 
