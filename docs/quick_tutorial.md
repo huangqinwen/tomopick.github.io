@@ -75,9 +75,10 @@ python phoenix_visualization.py --input exp/simsiam2d3d/test_sample/interactive_
 To convert downloaded parquet files from interactive sessions, run:
 
 ```
-python interactive_to_training_coords.py --input 2023-10-08_19-44-41.parquet --output training_coordinates.txt 
+python interactive_to_training_coords.py --input path_to_all_parquet_files --output training_coordinates.txt 
 
 ```
+Note: `--input` should be the path that contains all parquet files not a single parquet file.
 
 The obtained `training_coordinates.txt` should be the same as downloaded `training_coordinates.txt`. 
 

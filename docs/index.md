@@ -38,7 +38,14 @@ After install Anaconda:
     ```
     pip install -r requirements.txt
     ```
-3. Install TomoPick package and dependencies (If shows error, try go to one level above): 
+
+3. Install pytorch
+
+    ```
+    pip install torch==1.11.0+cu102 torchvision==0.12.0+cu102 torchaudio==0.11.0 --extra-index-url https://download.pytorch.org/whl/cu102
+    ```
+
+4. Install TomoPick package and dependencies (If shows error, try go to one level above): 
 
     ```
     pip install -e cet_pick
@@ -71,8 +78,11 @@ After install Anaconda:
 
 ```
 
-### Sample Dataset
+### Sample dataset for globular shaped protein
 Please find sample dataset of EMPIAR-10304 (including `.rec`, `.tlt`, `.ali`, parquet file from interactive session, sample train img txt for both exploration and refinement module, sample train coordinates txt for refinement module) [here](https://drive.google.com/drive/folders/1roME4QnAAam1q0D8I53WWGbtAS-D80jk?usp=drive_link). For usage, download all files and save all `.rec`, `.tlt`, `.ali` files to `sample_data` directory, save all `.txt` files to `data` directory. 
+
+### Sample dataset for tubular shaped protein 
+Please find sample dataset of EMPIAR-10987 (including `.rec`, sample train images and coordinates txt for refinement module) [here](https://drive.google.com/drive/folders/1opWDh0P_O84rUUk0iOKWD46f8ZRQ32jI?usp=sharing). For usage, download all files and save all `.rec`, files to `sample_data_microtubule` directory, save all `.txt` files to `data` directory. 
 
 <!-- For full documentation visit [mkdocs.org](https://www.mkdocs.org). -->
 
