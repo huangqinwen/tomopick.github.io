@@ -1,0 +1,1150 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://huangqinwen.github.io/tomopick.github.io/refine/">
+      
+      
+        <link rel="prev" href="../explore/">
+      
+      
+        <link rel="next" href="../quick_tutorial/">
+      
+      
+      <link rel="icon" href="../assets/milopyp_icon_only_large.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Particle Refined Localization - </title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--<type>:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#particle-refined-localization-module" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../assets/milopyp_large.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Particle Refined Localization
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href=".." class="md-tabs__link">
+          
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
+      
+  <img src="../assets/milopyp_large.png" alt="logo">
+
+    </a>
+    
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href=".." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cellular Content Exploration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Particle Refined Localization
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Particle Refined Localization
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#particle-refined-localization-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle refined localization module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-training-set-from-manual-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate training set from manual label
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Globular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-on-tubular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training on tubular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-on-gpus-with-less-memory-using-lightweight-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training on GPUs with less memory using lightweight model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inference-on-globular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference on globular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-on-tubular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference on tubular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-with-lightweight-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference with lightweight model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-output-txt-to-mod-for-imod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convert output txt to .mod for imod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick_tutorial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick tutorial
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#particle-refined-localization-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Particle refined localization module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-preparation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input preparation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Input preparation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-training-set-from-manual-label" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate training set from manual label
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#globular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Globular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-on-tubular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training on tubular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-on-gpus-with-less-memory-using-lightweight-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training on GPUs with less memory using lightweight model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Inference">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inference-on-globular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference on globular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-on-tubular-shaped-proteins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference on tubular shaped proteins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-with-lightweight-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inference with lightweight model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-output-txt-to-mod-for-imod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Convert output txt to .mod for imod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Particle Refined Localization</h1>
+
+<h3 id="particle-refined-localization-module">Particle refined localization module<a class="headerlink" href="#particle-refined-localization-module" title="Permanent link">&para;</a></h3>
+<p>For the refinement step, MiLoPYP learns to localize proteins of interests with high accuracy, when trained using sparsely annotated data. This step can be used without the previous exploration step. </p>
+<h3 id="input-preparation">Input preparation<a class="headerlink" href="#input-preparation" title="Permanent link">&para;</a></h3>
+<p>Training set should include two files: 1. a <code>.txt</code> file with tomogram name and path to tomogram; 2. a <code>.txt</code> file with image name and its corresponding x,y,z coordinates.</p>
+<ul>
+<li>
+<p><strong>If use refinement module after exploration module</strong>, we can use the same train image file and the generated train coordinates file from the exploration module. </p>
+</li>
+<li>
+<p><strong>If use refinement module alone</strong>, some manual labeling is needed to generate training coordinates. A corresponding train image file is needed as well. </p>
+</li>
+</ul>
+<p>For 1, the text file should have the following format:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>image_name   rec_path   
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>tomo1   path_to_tomo1
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>tomo2   path_to_tomo2 
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>...
+</span></code></pre></div>
+<p>For 2, the text file should have the following format:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>image_name  x_coord y_coord z_coord  
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>tomo1   125 38  60 
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>tomo1   130 45  80
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>...
+</span></code></pre></div>
+<h4 id="generate-training-set-from-manual-label">Generate training set from manual label<a class="headerlink" href="#generate-training-set-from-manual-label" title="Permanent link">&para;</a></h4>
+<p>We provide a simple code to generate the described training set from a selected folder. </p>
+<p>First, make a train directory for all training 3d tomograms and its corresponding coordinates files. Each micrograph should have its own coordinate file: e.g. train_1_img.rec and train_1_img_coord.txt </p>
+<p>For training coordinates, manually picking is performed on selected micrographs using imod. For a single tomogram, a full annotation is not required. Simply find some subregions and pick around 10\% to 70\% of the particles in that subregion. The subregion does not need to be big.  After manual annotation, imod will generate <code>.mod</code> files for annotated coordinates. Converting <code>.mod</code> files to <code>.txt</code> files can be done through <code>model2point</code> command from imod. A sample command is:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>model2point input.mod input.txt 
+</span></code></pre></div>
+Once all the <code>.mod</code> files are converted to text files, move all coordinate.txt files to the train directory. </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Depends on the x-y-z order of your input tomogram, the output coodinates generated using imod will be in different order. Two most common orders are <code>x-y-z</code> and <code>x-z-y</code>. Make sure you get the orders correct. </p>
+</div>
+<p>Once all the <code>.mod</code> files are converted to text files, move all coordinate.txt files to the train directory. </p>
+<p>To generate train image and coordinate files, run <code>generate_train_files.py</code> file under <code>utils/</code> folder. Two input arguments are required: <code>-d/--dir</code> for path to train directory, and <code>-o/--out</code> for output training file name. The default order for input coordinates is <code>x-z-y</code>, if you want to specify a different order, add <code>-r/--ord</code>. Accepted orders are: xyz, xzy, zxy.  An example command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python generate_train_files.py -e .rec -d sample_data -o sample_run -r xyz 
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Arguments</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>ext</code></td>
+<td style="text-align: left;">extension for tomogram files</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dir</code></td>
+<td style="text-align: left;">path that contains all training tomograms and labels</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>out</code></td>
+<td style="text-align: left;">training file output name</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ord</code></td>
+<td style="text-align: left;">order of the tomogram</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inference</code></td>
+<td style="text-align: left;">if set to true, generating input for evaluation stage</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Once files are generated, move all training files to <code>data/</code> directory (create <code>data/</code> directory if it doesn't exist)</strong></p>
+<h3 id="training">Training<a class="headerlink" href="#training" title="Permanent link">&para;</a></h3>
+<h4 id="globular-shaped-proteins">Globular shaped proteins<a class="headerlink" href="#globular-shaped-proteins" title="Permanent link">&para;</a></h4>
+<p>A sample training command to train sample EMPIAR-10304 dataset (suppose train image txt is called <code>sample_train_explore_img.txt</code> and train coordinates txt is called <code>training_coordinates.txt</code> and validation image txt is called <code>sample_val_img.txt</code> and validation coordinates txt is called <code>val_coordinates.txt</code> (Validation files are optional):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python main.py semi --down_ratio 2 --num_epochs 10 --bbox 16 --exp_id sample_refinement --dataset semi --arch unet_5 --save_all --debug 4 --val_interval 1 --thresh 0.85 --cr_weight 0.1 --temp 0.07 --tau 0.01 --lr 5e-4 --train_img_txt sample_train_explore_img.txt --train_coord_txt training_coordinates.txt --val_img_txt sample_val_img.txt --val_coord_txt val_coordinates.txt --K 900 --compress --order xzy --gauss 0.8 --contrastive --last_k 3
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Arguments</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>num_epochs</code></td>
+<td style="text-align: left;">number of training epochs, recommend 5 to 10</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>exp_id</code></td>
+<td style="text-align: left;">experiment id you want to save it as.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bbox</code></td>
+<td style="text-align: left;">bounding box size for particle, used to generate Guassian kernel during training.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>dataset</code></td>
+<td style="text-align: left;">sampling and dataloader mode, use <code>semi</code> for default</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>arch</code></td>
+<td style="text-align: left;">model backbone architecture, Format is <code>name"_"numOfLayers</code> - recommend unet_4 and unet_5</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lr</code></td>
+<td style="text-align: left;">learning rate, recommend 1e-3 to 5e-4, less training examples, lower learning rate</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>debug</code></td>
+<td style="text-align: left;">debug mode for visualization, currently only support mode 4 for easier visualization - output will be saved to 'debug folder' including view of each slice, ground truth heatmap, predicted heatmap, and detection prediction based on heatmap</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>val_interval</code></td>
+<td style="text-align: left;">interval to perform validation and save model every val intervals</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cr_weight</code></td>
+<td style="text-align: left;">weight for contrastive regularization, recommend smaller number for more samples, larger number for less samples</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>save_all</code></td>
+<td style="text-align: left;">whether to save all models for each val_interval</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gauss</code></td>
+<td style="text-align: left;">preprocessing gaussian filter to denoise tilt series and tomogram</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temp</code></td>
+<td style="text-align: left;">infoNCE temperature</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>down_ratio</code></td>
+<td style="text-align: left;">downsampling in x-y direction, default is 2. Recommend 2</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>tau</code></td>
+<td style="text-align: left;">class prior probability</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>thresh</code></td>
+<td style="text-align: left;">threshold for soft/hard positives</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>last_k</code></td>
+<td style="text-align: left;">size of convolution filter for last layer</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>compress</code></td>
+<td style="text-align: left;">whether to combine 2 z-slices into 1, recommend on</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>K</code></td>
+<td style="text-align: left;">maximum number of particles</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fiber</code></td>
+<td style="text-align: left;">if the protein-of-interest is fiber/tubular shaped, turn this on</td>
+</tr>
+</tbody>
+</table>
+<p>More description of arguments are in <code>opt.py</code> file.  Please refer to the paper for detailed parameter selection.</p>
+<p>All outputs will be saved to <code>exp/semi/exp_id</code> folder. For this command, outputs will be saved to <code>exp/semi/sample_refinement</code>. Within folder, there will be: </p>
+<ul>
+<li><code>opt.txt</code> which saves all the option you used. </li>
+<li><code>debug</code> folder, which saves all validation output. </li>
+<li><code>model_xxx.pth</code> model checkpoint, the final model weights will be <code>modelxxx_last_contrastive.pth</code>. </li>
+<li>A directory with specific training/validation loss info for each run </li>
+</ul>
+<p>Sample outputs in <code>debug</code> folder</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="globular-shaped-proteins-predicted-heatmap" name="__tabbed_1" type="radio" /><input id="globular-shaped-proteins-predicted-output-after-nms" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="globular-shaped-proteins-predicted-heatmap">predicted heatmap</label><label for="globular-shaped-proteins-predicted-output-after-nms">predicted output after nms</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="../assets/6pred_hm58.png"><img alt="predicted heatmap" src="../assets/6pred_hm58.png" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><a href="../assets/6pred_out58.png"><img alt="predicted output after nms" src="../assets/6pred_out58.png" /></a></p>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">How to select which model to use and cutoff threshold score for output?</p>
+<p>Model and cutoff  threshold score can be selected based on validation loss and outputs in <code>debug</code> folder. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="globular-shaped-proteins-model-selection" name="__tabbed_2" type="radio" /><input id="globular-shaped-proteins-cutoff-threshold-selection" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="globular-shaped-proteins-model-selection">Model selection</label><label for="globular-shaped-proteins-cutoff-threshold-selection">Cutoff Threshold Selection</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>When there is fully labeled tomogram for validation, typically select the model with the lowest validation loss. 
+When there is no fully labeled tomogram, select the model that generates best heatmaps. 
+Typically, unless there's severe overfitting, model from the last epoch generates good results. </p>
+</div>
+<div class="tabbed-block">
+<p>Cutoff threshold selection can be estimated based on detection output (a <code>.txt</code> file that contains x,y,z coordinates and corresponding detection score). It can also be estimated from <code>*_pred_out.png</code> images within <code>debug</code> fodler that circles out identified particles above a certain cutoff threshold. If there are many false positives, consider using a higher cutoff score. </p>
+</div>
+</div>
+</div>
+</div>
+<h4 id="training-on-tubular-shaped-proteins">Training on tubular shaped proteins<a class="headerlink" href="#training-on-tubular-shaped-proteins" title="Permanent link">&para;</a></h4>
+<p>A sample training command to train sample EMPIAR-10987 dataset (suppose train image txt is called <code>sample_train_microtubule_img.txt</code> and train coordinates txt is called <code>training_coordinates_microtubule.txt</code> and validation image txt is called <code>sample_val_microtubule.txt</code> and validation coordinates txt is called <code>val_coordinates_microtubule.txt</code> (Validation files are optional):</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python main.py semi --down_ratio 2 --num_epochs 10 --bbox 12 --contrastive --exp_id fib_test --dataset semi --arch unet_5 --save_all --debug 4 --val_interval 1 --thresh 0.3 --cr_weight 1.0 --temp 0.07 --tau 0.01 --lr 1e-4 --train_img_txt sample_train_microtubule_img.txt --train_coord_txt training_coordinates_microtubule.txt --val_img_txt sample_val_microtubule.txt --val_coord_txt val_coordinates_microtubule.txt --K 550 --compress --gauss 1 --order xzy --last_k 5 --fiber
+</span></code></pre></div>
+<p>Note here the main different is the <code>--fiber</code> command. Since the protein-of-interest is of tubular shape, make sure to have <code>--fiber</code> turned on. </p>
+<p>Outputs will be the same as training for globular shaped proteins. </p>
+<p>Sample outputs in <code>debug</code> folder. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="training-on-tubular-shaped-proteins-predicted-microtubule-heatmap" name="__tabbed_3" type="radio" /><input id="training-on-tubular-shaped-proteins-predicted-microtubule-output-after-nms-without-post-processing" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="training-on-tubular-shaped-proteins-predicted-microtubule-heatmap">predicted microtubule heatmap</label><label for="training-on-tubular-shaped-proteins-predicted-microtubule-output-after-nms-without-post-processing">predicted microtubule output after nms without post processing</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>[<img alt="predicted microtubule heatmap" src="../assets/10_L4_ts_03pred_hm39.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><a href="../assets/10_L4_ts_03pred_out39.png"><img alt="predicted output after nms without post processing" src="../assets/10_L4_ts_03pred_out39.png" /></a></p>
+</div>
+</div>
+</div>
+<h4 id="training-on-gpus-with-less-memory-using-lightweight-model">Training on GPUs with less memory using lightweight model<a class="headerlink" href="#training-on-gpus-with-less-memory-using-lightweight-model" title="Permanent link">&para;</a></h4>
+<p>For GPUs with less than 32GB RAM (e.g., 16GB), we provide a lightweight model that employs a modified contrastive learning approach. This model achieves comparable particle picking results while using less memory and offering improved time efficiency. Additionally, it demonstrates enhanced performance in spike detection.
+The lightweight model uses the same input training files but requires different command-line arguments. Below is a sample command for training the lightweight model:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>python main_class.py semiclass --num_epochs 20 --bbox 16 --contrastive --exp_id sample_lightweight --arch small_5 --debug 4 --val_interval 2 --thresh 0.5 --cr_weight 0.1 --temp 0.07 --tau 0.01 --lr 1e-3 --train_img_txt sample_train_explore_img.txt --train_coord_txt training_coordinates.txt --val_img_txt sample_val_img.txt --val_coord_txt val_coordinates.txt --K 900 --compress --order xzy --gauss 0.8 --contrastive --dataset semiclass --down_ratio 1 --ge
+</span></code></pre></div>
+The main differences are:</p>
+<ul>
+<li><code>main_class.py</code> this is the main file to train the model for lightweight </li>
+<li><code>semiclass</code> this is the task name for using lightweight model (required input after <code>main_class.py</code>)</li>
+<li><code>--arch</code> for lightweight model the architecture name is small_5 </li>
+<li><code>--dataset</code> for lightweight model the dataset mode is semiclass</li>
+<li><code>--down_ratio</code> for lightweight model the down_ratio is 1 </li>
+<li><code>--ge</code> for lightweight model we use a slightly modified loss function therefore please make sure this argument is on </li>
+</ul>
+<p>Other arguments are similar to the regular model. </p>
+<h3 id="inference">Inference<a class="headerlink" href="#inference" title="Permanent link">&para;</a></h3>
+<h4 id="inference-on-globular-shaped-proteins">Inference on globular shaped proteins<a class="headerlink" href="#inference-on-globular-shaped-proteins" title="Permanent link">&para;</a></h4>
+<p>Once training is finished, we can use the trained model for testing. <code>test_img.txt</code> that contains all tomograms can be generated using <code>generate_train_files.py</code> following similar process. To run inference on all tomograms, run:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python test.py semi --arch unet_5 --dataset semi --exp_id sample_refinement --load_model exp/semi/sample_refinement/model_4.pth --down_ratio 2 --K 900 --ord xzy --out_thresh 0.2 --test_img_txt test_img.txt --compress --gauss 0.8 --out_id all_out
+</span></code></pre></div>
+Outputs are saved to <code>exp/semi/sample_refinement/all_out/</code> folder. For each tomogram, 2 outputs are generated:</p>
+<ul>
+<li><code>.txt</code> file with coordinates in x,z,y order, if <code>--with_score</code> in command, a score column will be added to the output </li>
+<li><code>*hm.mrc</code> a 3D detection heatmap for each tomogram. </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Arguments</th>
+<th style="text-align: left;">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>load_model</code></td>
+<td style="text-align: left;">path to trained model, the command here is using model from 4<sup>th</sup> epoch</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>out_thresh</code></td>
+<td style="text-align: left;">cutoff score for detection</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>out_id</code></td>
+<td style="text-align: left;">folder to save all outputs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ord</code></td>
+<td style="text-align: left;">order of the tomogram</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>with_score</code></td>
+<td style="text-align: left;">whether generated output will include score in addition to x,y,z coordinates</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to use same <code>--last_k</code>, <code>--gauss</code>, <code>--arch</code> to make sure correct loading of models.</p>
+</div>
+<h4 id="inference-on-tubular-shaped-proteins">Inference on tubular shaped proteins<a class="headerlink" href="#inference-on-tubular-shaped-proteins" title="Permanent link">&para;</a></h4>
+<p>For tubular shaped proteins, similarly, we add <code>--fiber</code> to the command. In addition, we specify cutoff threshold for curve fitting to the infenrece command. To run inference on tomograms with fiber-specific post-processing, run:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>python test.py semi --arch unet_5 --dataset semi --exp_id fib_test --load_model exp/semi/fib_test/model_10.pth --down_ratio 2 --K 550 --order xzy --out_thresh 0.205 --test_img_txt sample_train_microtubule_img.txt --compress --gauss 1 --cutoff_z 10 --out_id new_out --last_k 5 --fiber --curvature_cutoff 0.03 --nms 3
+</span></code></pre></div>
+| Arguments   | Purpose                                                                       |
+|:-------------|:------------------------------------------------------------------------------|
+| <code>curvature_cutoff</code> | max curvature for fitted curve, for microtubules the curvature should be small. Curves above the threshold will be discarded.|
+| <code>r2_cutoff</code> | max residual for fitted curve, discard if above the residual/bad fitting|
+| <code>distance_cutoff</code> | distance cutoff for whether two points are connected in graph|</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="inference-on-tubular-shaped-proteins-without-post-processing" name="__tabbed_4" type="radio" /><input id="inference-on-tubular-shaped-proteins-after-post-processing" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="inference-on-tubular-shaped-proteins-without-post-processing">without post-processing</label><label for="inference-on-tubular-shaped-proteins-after-post-processing">after post-processing</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="../assets/10_L4_ts_03pred_out39.png"><img alt="without post-processing" src="../assets/10_L4_ts_03pred_out39.png" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><a href="../assets/l4_ts_03_post.jpg"><img alt="after post-processing" src="../assets/l4_ts_03_post.jpg" /></a></p>
+</div>
+</div>
+</div>
+<h4 id="inference-with-lightweight-model">Inference with lightweight model<a class="headerlink" href="#inference-with-lightweight-model" title="Permanent link">&para;</a></h4>
+<p>For the lightweight model, the inference command is similar to the standard model. The main differences in arguments correspond to those used in the training command. Below is a sample command for training the lightweight model:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>python test_class.py semiclass --exp_id sample_lightweight --arch small_5 --dataset semiclass --K 900 --compress --order xzy --gauss 0.8 --load_model exp/semiclass/sample_lightweight/model_4.pth --out_thresh 0.5 --test_img_txt test_img.txt --out_id all_out --down_ratio 1 --nms 15
+</span></code></pre></div>
+Note, the python code for inference is <code>test_class.py</code>. Output format is the same as the standard model. </p>
+<h4 id="convert-output-txt-to-mod-for-imod">Convert output txt to <code>.mod</code> for imod<a class="headerlink" href="#convert-output-txt-to-mod-for-imod" title="Permanent link">&para;</a></h4>
+<p>Make usre output txt files do not include score. Then, run:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>point2model -scat -sphere 5 output.txt output.mod
+</span></code></pre></div>
+More details on <a href="https://bio3d.colorado.edu/imod/doc/man/point2model.html">imod</a> command. </p>
+<p><strong>Output coordinates from trained model can then by used for subtomogram extraction and averaging and subsequent 3D reconstruction.</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../explore/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Cellular Content Exploration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Cellular Content Exploration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../quick_tutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: Quick tutorial">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Quick tutorial
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.sections", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
