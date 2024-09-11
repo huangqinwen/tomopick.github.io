@@ -156,6 +156,25 @@ Sample outputs in `debug` folder.
   [predicted microtubule heatmap]: assets/10_L4_ts_03pred_hm39.png
   [predicted output after nms without post processing]: assets/10_L4_ts_03pred_out39.png
 
+#### Training on GPUs with less memory using lightweight model
+
+For GPUs with less than 32GB RAM (e.g., 16GB), we provide a lightweight model that employs a modified contrastive learning approach. This model achieves comparable particle picking results while using less memory and offering improved time efficiency. Additionally, it demonstrates enhanced performance in spike detection.
+The lightweight model uses the same input training files but requires different command-line arguments. Below is a sample command for training the lightweight model:
+
+```
+python main_class.py semiclass --num_epochs 20 --bbox 16 --contrastive --exp_id sample_lightweight --arch small_5 --debug 4 --val_interval 2 --thresh 0.5 --cr_weight 0.1 --temp 0.07 --tau 0.01 --lr 1e-3 --train_img_txt sample_train_explore_img.txt --train_coord_txt training_coordinates.txt --val_img_txt sample_val_img.txt --val_coord_txt val_coordinates.txt --K 900 --compress --order xzy --gauss 0.8 --contrastive --dataset semiclass --down_ratio 1 --ge
+```
+The main differences are:
+
+- `main_class.py` this is the main file to train the model for lightweight 
+- `semiclass` this is the task name for using lightweight model (required input after `main_class.py`)
+- `--arch` for lightweight model the architecture name is small_5 
+- `--dataset` for lightweight model the dataset mode is semiclass
+- `--down_ratio` for lightweight model the down_ratio is 1 
+- `--ge` for lightweight model we use a slightly modified loss function therefore please make sure this argument is on 
+
+Other arguments are similar to the regular model. 
+
 
 ### Inference
 
@@ -206,7 +225,13 @@ python test.py semi --arch unet_5 --dataset semi --exp_id fib_test --load_model 
   [after post-processing]: assets/l4_ts_03_post.jpg
   [without post-processing]: assets/10_L4_ts_03pred_out39.png
 
+#### Inference with lightweight model 
+For the lightweight model, the inference command is similar to the standard model. The main differences in arguments correspond to those used in the training command. Below is a sample command for training the lightweight model:
 
+```
+python test_class.py semiclass --exp_id sample_lightweight --arch small_5 --dataset semiclass --K 900 --compress --order xzy --gauss 0.8 --load_model exp/semiclass/sample_lightweight/model_4.pth --out_thresh 0.5 --test_img_txt test_img.txt --out_id all_out --down_ratio 1 --nms 15
+```
+Note, the python code for inference is `test_class.py`. Output format is the same as the standard model. 
 
 #### Convert output txt to `.mod` for imod
 Make usre output txt files do not include score. Then, run:
